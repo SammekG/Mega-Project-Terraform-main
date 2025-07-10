@@ -35,7 +35,6 @@ rules:
     resources:
       - deployments
       - replicasets
-      - statefulsets
     verbs: ["get", "list", "watch", "create", "update", "delete","patch"]
 
   # Permissions for networking API group
@@ -77,22 +76,14 @@ kind: ClusterRole
 metadata:
   name: jenkins-cluster-role
 rules:
-  # Permissions for persistentvolumes
   - apiGroups: [""]
     resources:
       - persistentvolumes
     verbs: ["get", "list", "watch", "create", "update", "delete"]
-  # Permissions for storageclasses
   - apiGroups: ["storage.k8s.io"]
     resources:
       - storageclasses
     verbs: ["get", "list", "watch", "create", "update", "delete"]
-  # Permissions for ClusterIssuer
-  - apiGroups: ["cert-manager.io"]
-    resources:
-      - clusterissuers
-    verbs: ["get", "list", "watch", "create", "update", "delete"]
-
 ```
 
 
